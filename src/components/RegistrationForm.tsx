@@ -1,9 +1,9 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z, type ZodType } from 'zod';
 import { useState } from 'react';
+import { useForm, type Resolver } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const committees = ['Кыргызский', 'English', 'Русский', 'Другой'] as const;
@@ -16,9 +16,7 @@ type FormData = {
   wishes?: string;
 };
 
-// Явно фиксируем тип схемы как FormData,
-// чтобы resolver не пытался вывести age/experience как unknown.
-const formSchema: ZodType<FormData> = z.object({
+const formSchema = z.object({
   fullName: z.string().min(3, 'ФИО должно содержать минимум 3 символа'),
 
   age: z.coerce
@@ -27,8 +25,7 @@ const formSchema: ZodType<FormData> = z.object({
     .refine((val) => val >= 11, { message: 'Минимальный возраст — 11 лет' })
     .refine((val) => val <= 25, { message: 'Максимальный возраст — 25 лет' }),
 
-  committee: z
-    .enum(committees, { message: 'Выберите комитет' }),
+  committee: z.enum(committees, { message: 'Выберите комитет' }),
 
   experience: z.coerce
     .number()
@@ -39,6 +36,9 @@ const formSchema: ZodType<FormData> = z.object({
   wishes: z.string().optional(),
 });
 
+// ВАЖНО: фиксируем тип resolver вручную (обходит конфликт типов RHF/Resolvers)
+const resolver: Resolver<FormData> = zodResolver(formSchema) as unknown as Resolver<FormData>;
+
 export default function RegistrationForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -48,7 +48,7 @@ export default function RegistrationForm() {
     formState: { errors },
     reset,
   } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+    resolver,
     defaultValues: {
       fullName: '',
       age: 11,
