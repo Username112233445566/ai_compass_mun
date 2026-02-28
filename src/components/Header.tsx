@@ -2,6 +2,7 @@
 
 import { Menu } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 import Countdown from './Countdown';
 
 export default function Header() {
@@ -13,8 +14,14 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Логотип */}
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 gold-gradient rounded-full flex items-center justify-center text-2xl shadow-lg">
-              🧭
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="AI compass MUN"
+                width={45}
+                height={45}
+                className="object-contain"
+              />
             </div>
             <span className="font-bold text-lg text-[#0B1E33]">AI compass MUN</span>
           </div>

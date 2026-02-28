@@ -2,6 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { Users, Sparkles, Award, Gift, Calendar } from 'lucide-react';
+import Image from 'next/image';
+
+
+<Image
+  src="/logo.png"
+  alt="AI compass MUN"
+  width={120}
+  height={120}
+  className="mx-auto mb-6"
+/>
 
 export default function Hero() {
   const perks = [
