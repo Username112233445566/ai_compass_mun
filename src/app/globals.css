@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #0B1E33;
+  --gold: #B8914A;
+  --emerald: #2B4B3B;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #B8914A 0%, #D4AF37 100%);
+}
+
+.soft-shadow {
+  box-shadow: 0 10px 40px -15px rgba(11, 30, 51, 0.2);
+}
