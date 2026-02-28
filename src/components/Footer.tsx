@@ -9,7 +9,7 @@ export default function Footer() {
         </p>
         <div className="flex gap-6">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/ai.compass_mun?igsh=MTkwY2Uwc2JyZWwydA=="
             target="_blank"
             rel="noopener"
             className="hover:text-[#B8914A] transition"
