@@ -9,16 +9,18 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 const formSchema = z.object({
   fullName: z.string().min(3, 'ФИО должно содержать минимум 3 символа'),
   age: z.coerce
-    .number({ invalid_type_error: 'Введите число' })
-    .min(11, 'Минимальный возраст — 11 лет')
-    .max(25, 'Максимальный возраст — 25 лет'),
+    .number()
+    .refine((val) => !isNaN(val), { message: 'Введите число' })
+    .refine((val) => val >= 11, { message: 'Минимальный возраст — 11 лет' })
+    .refine((val) => val <= 25, { message: 'Максимальный возраст — 25 лет' }),
   committee: z.enum(['Кыргызский', 'English', 'Русский', 'Другой'], {
     required_error: 'Выберите комитет',
   }),
   experience: z.coerce
-    .number({ invalid_type_error: 'Введите число' })
-    .min(0, 'Не может быть отрицательным')
-    .int('Должно быть целым числом'),
+    .number()
+    .refine((val) => !isNaN(val), { message: 'Введите число' })
+    .refine((val) => val >= 0, { message: 'Не может быть отрицательным' })
+    .refine((val) => Number.isInteger(val), { message: 'Должно быть целым числом' }),
   wishes: z.string().optional(),
 });
 
