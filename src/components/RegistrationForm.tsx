@@ -6,6 +6,8 @@ import { z } from 'zod';
 import { useState } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
+const committees = ['Кыргызский', 'English', 'Русский', 'Другой'] as const;
+
 const formSchema = z.object({
   fullName: z.string().min(3, 'ФИО должно содержать минимум 3 символа'),
   age: z.coerce
@@ -13,14 +15,10 @@ const formSchema = z.object({
     .refine((val) => !isNaN(val), { message: 'Введите число' })
     .refine((val) => val >= 11, { message: 'Минимальный возраст — 11 лет' })
     .refine((val) => val <= 25, { message: 'Максимальный возраст — 25 лет' }),
-  committee: z.enum(['Кыргызский', 'English', 'Русский', 'Другой'], {
-    errorMap: (issue) => {
-      if (issue.code === 'invalid_enum_value') {
-        return { message: 'Выберите комитет' };
-      }
-      return { message: 'Некорректное значение' };
-    },
-  }),
+  committee: z.string()
+    .refine((val) => committees.includes(val as any), {
+      message: 'Выберите комитет',
+    }),
   experience: z.coerce
     .number()
     .refine((val) => !isNaN(val), { message: 'Введите число' })
