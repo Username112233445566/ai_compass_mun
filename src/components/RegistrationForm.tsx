@@ -14,7 +14,12 @@ const formSchema = z.object({
     .refine((val) => val >= 11, { message: 'Минимальный возраст — 11 лет' })
     .refine((val) => val <= 25, { message: 'Максимальный возраст — 25 лет' }),
   committee: z.enum(['Кыргызский', 'English', 'Русский', 'Другой'], {
-    required_error: 'Выберите комитет',
+    errorMap: (issue) => {
+      if (issue.code === 'invalid_enum_value') {
+        return { message: 'Выберите комитет' };
+      }
+      return { message: 'Некорректное значение' };
+    },
   }),
   experience: z.coerce
     .number()
