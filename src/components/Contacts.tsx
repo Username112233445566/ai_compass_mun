@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Send } from 'lucide-react';
 
 export default function Contacts() {
@@ -11,15 +10,8 @@ export default function Contacts() {
       <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
         {/* Генеральный секретарь */}
         <div className="text-center p-6 bg-white rounded-xl soft-shadow border border-white/50">
-          <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#B8914A]/30 shadow-sm">
-            <Image
-              src="/organizers/nurel.jpg"
-              alt="Шабданов Нурэл"
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-              priority
-            />
+          <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-[#0B1E33] flex items-center justify-center text-3xl text-white shadow-sm">
+            👤
           </div>
 
           <p className="font-bold text-lg text-[#0B1E33]">Генеральный секретарь</p>
@@ -36,14 +28,8 @@ export default function Contacts() {
 
         {/* Координатор */}
         <div className="text-center p-6 bg-white rounded-xl soft-shadow border border-white/50">
-          <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#2B4B3B]/25 shadow-sm">
-            <Image
-              src="/organizers/alisher.jpg"
-              alt="Белеков Алишер"
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-            />
+          <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-[#0B1E33] flex items-center justify-center text-3xl text-white shadow-sm">
+            👤
           </div>
 
           <p className="font-bold text-lg text-[#0B1E33]">Координатор</p>
@@ -58,7 +44,7 @@ export default function Contacts() {
           </a>
         </div>
 
-        {/* Зам. секретаря (без фото пока) */}
+        {/* Зам. секретаря (без фото) */}
         <div className="text-center p-6 bg-white rounded-xl soft-shadow border border-white/50">
           <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-[#0B1E33] flex items-center justify-center text-3xl text-white shadow-sm">
             👤

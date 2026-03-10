@@ -2,36 +2,21 @@
 
 import { motion } from 'framer-motion';
 import { Users, Sparkles, Award, Gift, Calendar } from 'lucide-react';
-import Image from 'next/image';
-
-
-<Image
-  src="/logo.png"
-  alt="AI compass MUN"
-  width={120}
-  height={120}
-  className="mx-auto mb-6"
-/>
 
 export default function Hero() {
-  const perks = [
-    { icon: Users, text: 'Нетворкинг с участниками' },
-    { icon: Sparkles, text: 'Образовательная программа' },
-    { icon: Award, text: 'Официальные сертификаты' },
-    { icon: Gift, text: 'Ценные подарки' },
-    { icon: Calendar, text: '22 марта 2026' },
-  ];
-
   return (
     <section className="relative py-24 px-4 overflow-hidden">
       {/* Фоновый градиент */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F1F5F9] to-white" />
-      
-      {/* Элегантный паттерн (лёгкие линии) */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 30 L43 45 L30 36 L17 45 L22 30 L10 20 L25 20 Z' fill='%23B8914A'/%3E%3C/svg%3E")`,
-        backgroundSize: '120px 120px',
-      }} />
+
+      {/* Элегантный паттерн */}
+      <div
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 30 L43 45 L30 36 L17 45 L22 30 L10 20 L25 20 Z' fill='%23B8914A'/%3E%3C/svg%3E")`,
+          backgroundSize: '120px 120px',
+        }}
+      />
 
       <div className="relative max-w-5xl mx-auto text-center">
         <motion.div
@@ -48,25 +33,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Список преимуществ (иконки + текст) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 max-w-4xl mx-auto mb-10"
-        >
-          {perks.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-white/30"
-            >
-              <div className="w-8 h-8 rounded-full bg-[#B8914A]/10 flex items-center justify-center">
-                <item.icon size={16} className="text-[#B8914A]" />
-              </div>
-              <span className="text-sm font-medium text-[#0B1E33]">{item.text}</span>
-            </div>
-          ))}
-        </motion.div>
+        {/* Блок преимуществ УДАЛЁН */}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
