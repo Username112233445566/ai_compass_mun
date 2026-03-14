@@ -11,6 +11,7 @@ const committees = [
   'Генеральная Ассамблея (английский)',
   'Международный Суд (русский)',
   'ФАО (русский)',
+  'ЮНЕСКО (русский)',
 ] as const;
 
 type FormData = {
@@ -69,7 +70,6 @@ export default function RegistrationForm() {
     defaultValues: {
       fullName: '',
       age: 11,
-      // не ставим значение по умолчанию, чтобы человек точно выбрал
       committee: undefined as unknown as FormData['committee'],
       telegram: '',
       phone: '',
@@ -162,6 +162,7 @@ export default function RegistrationForm() {
               <option value="Генеральная Ассамблея (английский)">Генеральная Ассамблея (английский)</option>
               <option value="Международный Суд (русский)">Международный Суд (русский)</option>
               <option value="ФАО (русский)">ФАО (русский)</option>
+              <option value="ЮНЕСКО (русский)">ЮНЕСКО (русский)</option>
             </select>
             {errors.committee && <p className="text-red-600 text-sm mt-1">{errors.committee.message}</p>}
           </div>
