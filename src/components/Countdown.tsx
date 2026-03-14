@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const DEADLINE = new Date('2026-03-12T23:59:59+06:00').getTime(); // время бишкекское (UTC+6)
+const DEADLINE = new Date('2026-03-20T23:59:59+06:00').getTime();
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState(DEADLINE - Date.now());

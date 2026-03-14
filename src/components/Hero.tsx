@@ -61,7 +61,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-sm text-gray-500"
         >
-          Дедлайн регистрации: <span className="font-semibold text-[#0B1E33]">12 марта 2026</span>
+          Дедлайн регистрации: <span className="font-semibold text-[#0B1E33]">20 марта 2026</span>
         </motion.p>
       </div>
     </section>
