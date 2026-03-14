@@ -18,20 +18,6 @@ const committees = [
     icon: '🇺🇳',
   },
   {
-    title: 'Русский комитет (ФАО)',
-    committee: 'ФАО',
-    theme: 'Банановый вирус: возможное исчезновение ключевых фермерских культурных угодий',
-    description: 'Анализ угрозы продовольственной безопасности из-за распространения бананового вируса.',
-    icon: '🍌',
-  },
-  {
-    title: 'Русский комитет (Международный Суд)',
-    committee: 'Международный Суд',
-    theme: 'Признание Косово как суверенное государство',
-    description: 'Рассмотрение правовых аспектов одностороннего провозглашения независимости Косово.',
-    icon: '⚖️',
-  },
-  {
     title: 'Русский комитет (ЮНЕСКО)',
     committee: 'ЮНЕСКО',
     theme: 'Влияние ИИ алгоритмов на успеваемость школьников и студентов',
@@ -47,7 +33,7 @@ export default function Committees() {
       <p className="text-center text-[#2B4B3B] mb-12 max-w-2xl mx-auto">
         Выбери направление, которое тебе ближе
       </p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {committees.map((c, i) => (
           <motion.div
             key={i}

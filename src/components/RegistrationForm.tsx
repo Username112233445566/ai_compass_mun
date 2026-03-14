@@ -9,8 +9,6 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 const committees = [
   'ЭКОСОК (кырг)',
   'Генеральная Ассамблея (английский)',
-  'Международный Суд (русский)',
-  'ФАО (русский)',
   'ЮНЕСКО (русский)',
 ] as const;
 
@@ -160,8 +158,6 @@ export default function RegistrationForm() {
               </option>
               <option value="ЭКОСОК (кырг)">ЭКОСОК (кырг)</option>
               <option value="Генеральная Ассамблея (английский)">Генеральная Ассамблея (английский)</option>
-              <option value="Международный Суд (русский)">Международный Суд (русский)</option>
-              <option value="ФАО (русский)">ФАО (русский)</option>
               <option value="ЮНЕСКО (русский)">ЮНЕСКО (русский)</option>
             </select>
             {errors.committee && <p className="text-red-600 text-sm mt-1">{errors.committee.message}</p>}
