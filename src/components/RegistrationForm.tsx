@@ -6,10 +6,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
-const committees = [
+export const committees = [
   'ЭКОСОК (кырг)',
   'Генеральная Ассамблея (английский)',
   'ЮНЕСКО (русский)',
+  'Международный Суд (русский)',
 ] as const;
 
 type FormData = {
@@ -19,6 +20,7 @@ type FormData = {
   telegram: string;
   phone: string;
   experience: number;
+  education: string;
   wishes?: string;
 };
 
@@ -49,6 +51,8 @@ const formSchema = z.object({
     .refine((val) => val >= 0, { message: 'Не может быть отрицательным' })
     .refine((val) => Number.isInteger(val), { message: 'Должно быть целым числом' }),
 
+  education: z.string().min(1, 'Введите место обучения'),
+
   wishes: z.string().optional(),
 });
 
@@ -72,6 +76,7 @@ export default function RegistrationForm() {
       telegram: '',
       phone: '',
       experience: 0,
+      education: '',
       wishes: '',
     },
   });
@@ -159,6 +164,7 @@ export default function RegistrationForm() {
               <option value="ЭКОСОК (кырг)">ЭКОСОК (кырг)</option>
               <option value="Генеральная Ассамблея (английский)">Генеральная Ассамблея (английский)</option>
               <option value="ЮНЕСКО (русский)">ЮНЕСКО (русский)</option>
+              <option value="Международный Суд (русский)">Международный Суд (русский)</option>
             </select>
             {errors.committee && <p className="text-red-600 text-sm mt-1">{errors.committee.message}</p>}
           </div>
@@ -194,6 +200,16 @@ export default function RegistrationForm() {
               className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#B8914A]"
             />
             {errors.experience && <p className="text-red-600 text-sm mt-1">{errors.experience.message}</p>}
+          </div>
+
+          {/* Место обучения */}
+          <div>
+            <label className="block mb-1 font-medium text-[#0B1E33]">Место обучения *</label>
+            <input
+              {...register('education')}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#B8914A]"
+            />
+            {errors.education && <p className="text-red-600 text-sm mt-1">{errors.education.message}</p>}
           </div>
 
           {/* Пожелания */}

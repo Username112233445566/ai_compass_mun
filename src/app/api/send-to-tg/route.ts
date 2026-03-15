@@ -5,6 +5,7 @@ const committees = [
   'ЭКОСОК (кырг)',
   'Генеральная Ассамблея (английский)',
   'ЮНЕСКО (русский)',
+  'Международный Суд (русский)',
 ] as const;
 
 const formSchema = z.object({
@@ -21,6 +22,7 @@ const formSchema = z.object({
     .regex(/^[0-9+\-\s()]+$/, 'Invalid phone number'),
   experience: z.coerce.number().min(0).int(),
   wishes: z.string().optional(),
+  education: z.string().min(1),
 });
 
 export async function POST(request: Request) {
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: parsed.error.format() }, { status: 400 });
     }
 
-    const { fullName, age, committee, telegram, phone, experience, wishes } = parsed.data;
+    const { fullName, age, committee, telegram, phone, experience, wishes, education } = parsed.data;
 
     // Нормализуем telegram чтобы всегда был с @
     const tg = telegram.startsWith('@') ? telegram : `@${telegram}`;
@@ -46,6 +48,7 @@ export async function POST(request: Request) {
 <b>📲 Telegram:</b> ${tg}
 <b>📞 Телефон:</b> ${phone}
 <b>🌍 Опыт MUN:</b> ${experience} конференций
+<b>🏫 Место обучения:</b> ${education}
 <b>📝 Пожелания:</b> ${wishes?.trim() ? wishes : '—'}
 ━━━━━━━━━━━━━━━━━━━━━
 <i>Заявка отправлена через сайт</i>
